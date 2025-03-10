@@ -1,5 +1,10 @@
+from asciimatics.screen import Screen
+from asciimatics.scene import Scene
+from asciimatics.effects import Cycle, Stars, Print
+from asciimatics.renderers import SpeechBubble, Rainbow
 from termcolor import colored
-ascii_art=r"""
+def thank_you(screen):
+    ascii_art=r"""
                           _____     _   _       _        _   _        _  __        __   __    U  ___ u    _   _  
                          |_ " _|   |'| |'|  U  /"\  u   | \ |"|      |"|/ /        \ \ / /     \/"_ \/ U |"|u| | 
                            | |    /| |_| |\  \/ _ \/   <|  \| |>     | ' /          \ V /      | | | |  \| |\| | 
@@ -16,5 +21,16 @@ ascii_art=r"""
 (__)(__)   "  (__)(_/   \.)   (_/    (__)(_/       (__)    (_")("_)  (_")("_)      (__)    \_)-'  '-(_/ (__) (__)  (__)  (__)  (__)      
 
 """
-colored_ascii_art= colored(ascii_art, 'red', on_color='on_yellow')
-print(colored_ascii_art)
+    colored_ascii_art= colored(ascii_art, 'red')
+    scenes = []
+    effects = [
+        Stars(screen, screen.width),
+        Print(screen,
+              Rainbow(screen,SpeechBubble(colored_ascii_art)),
+              y=screen.height - 30)
+    ]
+    scenes.append(Scene(effects, -1))
+    screen.play(scenes, stop_on_resize=True)
+    
+
+Screen.wrapper(thank_you)
