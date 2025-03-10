@@ -1,8 +1,12 @@
 from asciimatics.screen import Screen
+
 from asciimatics.scene import Scene
 from asciimatics.effects import Cycle, Stars, Print
 from asciimatics.renderers import SpeechBubble, Rainbow
+from asciimatics.particles import RingFirework, SerpentFirework, StarFirework, PalmFirework
 from termcolor import colored
+
+from random import randint, choice
 def thank_you(screen):
     ascii_art=r"""
                           _____     _   _       _        _   _        _  __        __   __    U  ___ u    _   _  
@@ -29,6 +33,24 @@ def thank_you(screen):
               Rainbow(screen,SpeechBubble(colored_ascii_art)),
               y=screen.height - 30)
     ]
+    for _ in range(20):
+        fireworks = [
+            (PalmFirework, 25, 30),
+            (PalmFirework, 25, 30),
+            (StarFirework, 25, 35),
+            (StarFirework, 25, 35),
+            (StarFirework, 25, 35),
+            (RingFirework, 20, 30),
+            (SerpentFirework, 30, 35),
+        ]
+        firework, start, stop = choice(fireworks)
+        effects.insert(
+            1,
+            firework(screen,
+                     randint(0, screen.width),
+                     randint(screen.height // 8, screen.height * 3 // 4),
+                     randint(start, stop),
+                     start_frame=randint(0, 250)))
     scenes.append(Scene(effects, -1))
     screen.play(scenes, stop_on_resize=True)
     
