@@ -1,10 +1,15 @@
 from asciimatics.screen import Screen
-
+import pygame
+import time
 from asciimatics.scene import Scene
 from asciimatics.effects import Cycle, Stars, Print
 from asciimatics.renderers import SpeechBubble, Rainbow
 from asciimatics.particles import RingFirework, SerpentFirework, StarFirework, PalmFirework
 from termcolor import colored
+
+pygame.mixer.init()
+pygame.mixer.music.load("Fireworks with Sound Effects.mp3")
+pygame.mixer.music.play()
 
 from random import randint, choice
 def thank_you(screen):
