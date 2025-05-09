@@ -10,7 +10,7 @@ Python art for 2.1k followers celebration on LinkedIn
 
 [![Fireworks Demo](https://img.youtube.com/vi/ffaac42d-149d-4b23-a145-3fe40bdd2dff/0.jpg)](https://github.com/user-attachments/assets/ffaac42d-149d-4b23-a145-3fe40bdd2dff)
 
-Click the image to watch the demo video.
+Click above to watch the demo video.
 
 ## Description
 
